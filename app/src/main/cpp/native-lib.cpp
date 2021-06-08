@@ -40,12 +40,10 @@ Java_com_example_ex1_MainActivity_HSVdetectorJNI(JNIEnv *env, jobject instance, 
 
     int l_meat = 0;
     int f_meat = 0;
-    int White = 0;
 
     Scalar red(0,0,255);
     Mat Color_red = Mat(1,1,CV_8UC3,red);
     int r,g,b;
-    int check=0;
     for(int i = 0; i< height;i++)
     {
         for(int j = 0 ; j < width; j++)
@@ -54,16 +52,13 @@ Java_com_example_ex1_MainActivity_HSVdetectorJNI(JNIEnv *env, jobject instance, 
             g = img.at<Vec3b>(i,j)[1];
             b = img.at<Vec3b>(i,j)[0];
 
-            int check = Color_distance(r,g,b);
 
-            if(30 < check && check < 150)
+            if(Color_distance(r,g,b) == 0)
                 f_meat++ ; //지방
-            else if(150 < check && check < 380)
+            else if(Color_distance(r,g,b) == 1)
                 l_meat++ ; //고기부분
-
-            if(check == 0)
-                White ++;
-
+            else
+                ;
         }
     }
 
@@ -74,9 +69,16 @@ Java_com_example_ex1_MainActivity_HSVdetectorJNI(JNIEnv *env, jobject instance, 
 }
 
 int Color_distance(int r, int g, int b) {
-    int parameter = (255 - r) * (255 - r) + (255 - g) * (255 - g) + (255 - b) * (255 - b);
-    int distance = sqrt(parameter);
+    if(r > g && r > b) {
+        int parameter = (255 - r) * (255 - r) + (255 - g) * (255 - g) + (255 - b) * (255 - b);
+        int distance = sqrt(parameter);
 
-    return distance;
+        if (30 < distance && distance < 150)
+            return 0;
+        else if (150 < distance && distance < 380)
+            return 1;
+        else
+            return 2;
+    }
 }
 
