@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <LinearLayout android:orientation="vertical" android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/activity_main" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="match_parent">
+
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/load_image_btn" android:text="Load Image" android:onClick="onButtonClicked"/>
+
+</LinearLayout>
+
+
+    -<LinearLayout android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="match_parent">
+
+    <ImageView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/origin_iv" android:layout_marginTop="20dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id = "@+id/after"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/pixel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Fat?" />
+
+</LinearLayout>
+
+</LinearLayout>
